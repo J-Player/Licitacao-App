@@ -1,0 +1,2 @@
+from .licitacao_repository import LicitacaoRepository
+from .licitacao_item_repository import LicitacaoItemRepository

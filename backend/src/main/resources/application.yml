@@ -1,0 +1,32 @@
+spring:
+  r2dbc:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    shutdown:
+      enabled: true
+springdoc:
+  webjars:
+    prefix: ""
+  swagger-ui:
+    operationsSorter: method
+    tagsSorter: alpha
+logging:
+  level:
+    org:
+      springframework:
+        cache: TRACE
+  api:
+    configs:
+      cache: DEBUG
+    services:
+      cache: DEBUG
+server:
+  error:
+    include-stacktrace: on_param
