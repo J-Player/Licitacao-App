@@ -1,19 +1,22 @@
 package com.example.demo.repositories;
 
-import java.util.UUID;
-
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
-import org.springframework.stereotype.Repository;
-
 import com.example.demo.models.entities.Licitacao;
-
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.data.repository.reactive.ReactiveSortingRepository;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
+import java.util.UUID;
+
 @Repository
-public interface LicitacaoRepository extends ReactiveCrudRepository<Licitacao, UUID> {
+public interface LicitacaoRepository extends ReactiveCrudRepository<Licitacao, UUID>, ReactiveSortingRepository<Licitacao, UUID> {
 
-    Flux<Licitacao> findAllByUasg(Integer id);
+    Flux<Licitacao> findAllByUasgAndNumeroPregao(Integer uasg, Integer numeroPregao, Pageable pageable);
 
-    Flux<Licitacao> findByUasgAndNumeroPregao(Integer uasg, Integer numeroPregao);
+    Flux<Licitacao> findAllByUasg(Integer uasg, Pageable pageable);
 
+    Flux<Licitacao> findAllByNumeroPregao(Integer numeroPregao, Pageable pageable);
+
+    Flux<Licitacao> findAllBy(Pageable pageable);
 }

@@ -3,14 +3,6 @@ spring:
     url: r2dbc:postgresql://localhost:5432
     username: postgres
     password: postgres
-  docker:
-    compose:
-      profiles:
-        active: dev
-      file: docker-compose.yml
-      stop:
-        command: down
-        timeout: 0
 management:
   endpoints:
     web:

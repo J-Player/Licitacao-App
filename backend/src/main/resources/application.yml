@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   r2dbc:
     url: ${DB_URL}
     username: ${DB_USERNAME}
@@ -17,16 +19,6 @@ springdoc:
   swagger-ui:
     operationsSorter: method
     tagsSorter: alpha
-logging:
-  level:
-    org:
-      springframework:
-        cache: TRACE
-  api:
-    configs:
-      cache: DEBUG
-    services:
-      cache: DEBUG
 server:
   error:
     include-stacktrace: on_param
